@@ -66,7 +66,6 @@ function post_loader(array, type){
 }   }
 function title_add(name){
     document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML  + ' • ' + name
-    document.getElementsByTagName('title')[0].innerHTML = document.getElementsByTagName('title')[0].innerHTML  + ' • ' + name
-    
-}
+    document.getElementsByTagName('title')[0].innerHTML = document.getElementsByTagName('title')[0].innerHTML  + ' • ' + name}
+document.getElementById('js_disabled').remove()
 

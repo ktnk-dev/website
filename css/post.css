@@ -15,18 +15,19 @@
 } .post_title {
   font-size: 18px;
 } .post_text {
-  margin: 6px 23px 0;
+  margin: 6px 22px 1px;
   color: #ccc;
   transition: all .4s;
 } .post_end_url {
   margin-right: 10px;
 } .post_image {
-  margin: 6px 23px 0;
+  margin: 6px 22px 0;
   width: 90%;
   max-width: 600px;
   height: auto;
   filter: grayscale();
   transition: all .5s;
+  border: #444 1px solid;
 } .post_image:hover {
   filter: none;
 }

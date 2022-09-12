@@ -15,7 +15,10 @@
 <header>
     <div class="header">
         <div><a href="/" class="header_text">シンヤ</a></div>
-        <div class="header_links"> </div>
+        <div class="header_links">
+            <a href="/js/" class="header_link" id="js_disabled">JavaScript Disabled!</a>
+            
+        </div>
     </div>
     <span class="scroll_down">[scroll down]</span> 
 </header><div class="main">
@@ -39,14 +42,28 @@
 
 header_active('Projects')
 projects = [{
-    title: 'This website',
+    title: window.location.host,
     text: 'Исходный код этого сайта. Бесполезно, но прикольно',
     img: false, 
     urls: [
-        ['Open', '/'],
         ['Github', 'https://github.com/ktnk-dev/website']
+]}
+,{
+    title:'shorturl-data-parser',
+    text:'Скрипт на Python, который парсит пользовательскую информацию из сокращенной ссылки ',
+    img: 'https://media.discordapp.net/attachments/766761127882522635/1018975671822856253/unknown.png',
+    urls: [['Github','https://github.com/ktnk-dev/shorturl-data-parser/']]
+}
+,{
+    title: 'anekdot',
+    text: 'Python скрипт, который выводит случайный анекдот',
+    img: false,
+    urls:[
+        ['Github','https://github.com/ktnk-dev/anekdot']
     ]
-},]
+}
+    
+    ,]
 title_add('Projects')
 post_loader(projects,'project')
 

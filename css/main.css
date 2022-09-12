@@ -61,12 +61,24 @@
   display: flex;
   flex-direction: column;
   max-width: 600px;
+} #js_disabled {
+  border: #000 0px solid;
+  transition: all .4s;
+  animation: js_disabled 1.8s;
+  animation-iteration-count: 999999;
+} #js_disabled:hover {
+  border-bottom-width: 1px;
+
 }
 
 @keyframes blink{
   0%  {color: #fff;}
   100%{color: #000;}
-} 
+} @keyframes js_disabled {
+  0%  {color: #ddd; border-color: #ccc ;}
+  50% {color: #f99; border-color: #faa ;}
+  100%{color: #ddd; border-color: #ccc ;}
+}
 
 @media (max-width:460px) {
   .header{
