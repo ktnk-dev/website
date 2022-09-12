@@ -62,10 +62,11 @@ function post_loader(array, type){
             post_image.classList.add('post_image')
             post_div.appendChild(post_image)
         }
-    
-        document.getElementsByClassName('main')[0].appendChild(post_div)
-    
-    }
+        document.getElementsByClassName('main')[0].appendChild(post_div)    
+}   }
+function title_add(name){
+    document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML  + ' • ' + name
+    document.getElementsByTagName('title')[0].innerHTML = document.getElementsByTagName('title')[0].innerHTML  + ' • ' + name
     
 }
 
