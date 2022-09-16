@@ -49,11 +49,13 @@
   font-weight: 500;
   border: 0;
   color: #fff;
-} .scroll_down {
+} .header_status {
   margin-top: 10px;
   font-size: 11px;
   animation: blink 1s;
   animation-iteration-count: 999999
+} app {
+  margin: 6px 22px 0;
 }
 
 #qr_code{
@@ -82,8 +84,8 @@
 }
 
 @keyframes blink{
-  0%  {color: #fff;}
-  100%{color: #000;}
+  0%  {color: #fff; opacity: 100%;}
+  100%{opacity: 0%;}
 } @keyframes js_disabled {
   0%  {color: #ddd; border-color: #ccc ;}
   50% {color: #f99; border-color: #faa ;}

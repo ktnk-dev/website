@@ -19,6 +19,7 @@
   color: #ccc;
   transition: all .4s;
 } .post_end_url {
+  width: fit-content;
   margin-right: 10px;
 } .post_image {
   margin: 6px 22px 0;
