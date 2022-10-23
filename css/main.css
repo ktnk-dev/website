@@ -64,6 +64,8 @@
   max-width: 100px;
   max-height: 100px;
   border: #ddd 5px solid;
+  animation: qr_load 1.3s;
+
 
   
 }
@@ -90,6 +92,10 @@
   0%  {color: #ddd; border-color: #ccc ;}
   50% {color: #f99; border-color: #faa ;}
   100%{color: #ddd; border-color: #ccc ;}
+} @keyframes qr_load{
+  0%  {opacity: 0;}
+  30% {opacity: 0;}
+  100%{opacity: 1;}
 }
 
 @media (max-width:460px) {

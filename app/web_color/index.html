@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Выбор цвета</title>
+<style>
+body{
+    margin: 0;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+header{
+    position: fixed;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .51);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 0 0 10px 10px;
+}
+
+.sliders{
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    margin-right: 15px;
+}
+.slider{
+    -webkit-appearance: none;
+    background: #aaa;
+    background-image: none;
+    height: 10px;
+    border-radius: 10px;
+    outline: none;
+    outline-color: currentColor;
+}
+.slider-info{
+    color: #fff;
+    font-family: monospace;
+    font-size: 20px;
+    margin: 0 5px;
+}
+.slider-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 5px;
+    height: 40px;
+    
+}
+
+.saves{
+    /* background-color: #111; */
+    /* min-width: 100%; */
+    min-width: auto;
+
+    height: 40px;
+    color: #fff;
+    font-family: monospace;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+
+}
+.saved-element{
+    height: 34px;
+    min-width: 34px;
+    max-width: 34px;
+    margin: 3px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: #222 3px solid */
+}
+.saved-sep{
+    height: 34px; margin: 3px 3px;
+    /* color: #222; */
+}
+
+.spt{
+    margin: 0 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 8px 13px;
+    
+    font-size: 14px;
+}
+.saved-text{
+    border-radius: 50px;
+    background-color: #ddd;
+    color: #222;
+    height: 34px;
+    margin: 3px;
+    min-width: max-content;
+    transition: all .4s;
+}
+.saved-text:hover{
+    color: black;
+    background-color: #fff;
+}
+.opt{
+    display: none;
+    
+}
+
+@media (max-width: 900px){
+    header{
+        flex-direction: column;
+        /* align-items: center; */
+        height: 80px;
+    }
+    .saves{
+        justify-content: flex-start;
+
+    }
+}
+
+@media (max-width: 510px){
+    .sliders{
+        height: 90px;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .slider-div{
+        height: 30px;
+    }
+    .saves{
+        height: 90px;
+        min-width: auto;
+        /* flex-direction: column; */
+        flex-wrap: wrap;
+
+    }
+    header{
+        height: 90px;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 0 0 10px 10px;
+    }
+  
+    .saved-sep{
+        margin-top: 5px;
+    }
+    
+
+}
+h2{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #aaa;
+}
+a{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-family: monospace, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ddd;
+}
+
+
+</style>
+</head>
+<body id="color">
+<header>
+    <div class="sliders">
+        <div class="slider-div">
+            <p class="slider-info">H</p>
+            <input class="slider" id="H-slider" type="range" min="0" max="255" value="0">
+        </div>
+        <div class="slider-div">
+            <p class="slider-info">S</p>
+            <input class="slider" id="S-slider" type="range" min="0" max="255" value="255">
+        </div>
+        <div class="slider-div">
+            <p class="slider-info">L</p>
+            <input class="slider" id="L-slider" type="range" min="0" max="255" value="122">
+        </div>
+
+    </div>
+
+
+    <div class="saves" id="saves">
+        <div class="saved-text s-color" onclick="settings('show')" ><p class="spt">Настройки</p></div>
+        <div class="saved-text opt" onclick="settings('back')" ><p class="spt"><</p></div>
+        <div class="saved-text opt" onclick="save('add',r,g,b)" ><p class="spt">Добавить цвет</p></div>
+        <div class="saved-text opt" onclick="save('del',r,g,b)" ><p class="spt">Убрать цвет </p></div>
+        <div class="saved-text opt" onclick="share()" ><p class="spt">Поделиться </p></div>
+        <div class="saved-text opt" onclick="window.location = '?embed='+r+'-'+g+'-'+b" ><p class="spt">Только цвет</p></div>
+        <!-- <hr class="saved-sep" > -->
+        
+        
+    </div>
+</header>
+
+
+<script>
+    h_slider = document.getElementById("H-slider")
+s_slider = document.getElementById("S-slider")
+l_slider = document.getElementById("L-slider")
+if (location.search.slice(1).split("=")[0] == "import"){
+    req = location.search.slice(1).split("=")[1]
+    document.cookie += req
+    window.location = "./"
+}
+
+function load_cookies(){
+    try{
+        data = document.cookie
+        console.log(data);
+        data = data.split("+")
+    
+    } catch {
+        return 0 
+    } 
+    
+    for (let i = 0; i < data.length-1; i++) {
+        const element = data[i];
+        
+        
+        req = element.split("-")
+        
+        r = req[0]; g = req[1]; b = req[2]
+        save('add',r,g,b, false)
+
+        
+    }
+}
+load_cookies()
+
+r = 0; g = 0; b = 0
+h = 0; s = 250; l = 120
+function hslToRgb(h, s, l){
+    if(s == 0){
+        r = g = b = l; 
+    }else{
+        var hue2rgb = function hue2rgb(p, q, t){
+            if(t < 0) t += 1;
+            if(t > 1) t -= 1;
+            if(t < 1/6) return p + (q - p) * 6 * t;
+            if(t < 1/2) return q;
+            if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+        }
+
+        var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+        var p = 2 * l - q;
+        r = hue2rgb(p, q, h + 1/3);
+        g = hue2rgb(p, q, h);
+        b = hue2rgb(p, q, h - 1/3);
+    }
+
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+}
+
+function render_color() {
+    body = document.getElementById("color")
+    color = hslToRgb(h/255,s/255,l/255)
+    r = color[0]; g = color[1]; b = color[2]
+    body.style.background = "rgb("+r+","+g+","+b+")"
+    // console.log(h,s,l +" -> "+ r,g,b)
+}
+
+h_slider.oninput = function(){
+    h = h_slider.value
+    render_color()
+
+}
+s_slider.oninput = function(){
+    s = s_slider.value
+    render_color()
+}
+l_slider.oninput = function(){
+    l = l_slider.value
+    render_color()
+}
+function set_color(r_,g_,b_) {
+    r = r_; g = g_; b = b_
+    document.getElementById("color").style.background =  "rgb("+r+","+g+","+b+")"
+    
+    
+}
+function share() {
+    document.getElementsByTagName('header')[0].style.display = "none"
+    document.getElementById("color").style.background =  "#000"
+    text = document.createElement("a")
+    text.href = window.location.href 
+    text.innerHTML = "Вернуться назад"
+    // text.style.decoration = "none"
+    document.getElementById("color").appendChild(text)
+    text = document.createElement("h2")
+    text.innerHTML = "Скопируйте ссылку ниже"
+    document.getElementById("color").appendChild(text)
+    text = document.createElement("a")
+    text.href = text.innerHTML = window.location.href + "?import=" + document.cookie
+    document.getElementById("color").appendChild(text)
+    
+    // navigator.clipboard.writeText(window.location.href + "?import=" + document.cookie)
+    // alert("Публичная ссылка была скопирована в буфер обмена")
+
+    
+}
+function save(act, r,g,b, new_id) {
+    if (act == "add"){
+        if(document.getElementById(r+'-'+g+'-'+b) != null){
+            return 0
+        }
+            
+        
+        newsave = document.createElement('div')
+        newsave.classList.add('saved-element')
+        newsave.classList.add('s-color')
+        newsave.id = r+'-'+g+'-'+b
+        newsave.style.background = "rgb("+r+","+g+","+b+")"
+        newsave.onclick = function () {
+            set_color(r,g,b)    
+        }
+        savedlist = document.getElementById("saves")
+        savedlist.appendChild(newsave)
+        if (new_id != false){
+
+            document.cookie += r+'-'+g+'-'+b+"+"
+        }
+        settings('back')
+    }
+    if (act == "del"){
+        document.cookie = document.cookie.replace(r+'-'+g+'-'+b+"+", "")
+        document.getElementById(r+'-'+g+'-'+b).remove()
+        settings('back')
+    }
+    
+}
+
+
+function settings(act) {
+    if (act == "show"){
+        elements = document.getElementsByClassName("s-color")
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            element.style.display = "none"
+            
+        }
+        elements = document.getElementsByClassName("opt")
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            element.style.display = "block"
+            
+        }
+
+
+    }
+    if (act == "back"){
+        elements = document.getElementsByClassName("opt")
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            element.style.display = "none"
+            
+        }
+        elements = document.getElementsByClassName("s-color")
+        for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            element.style.display = "block"
+            
+        }
+
+
+    }
+    
+}
+
+req = location.search.slice(1)
+
+if (req.split("=")[0] == "embed"){
+    req = req.slice(6).split("-")
+    r = req[0]; g = req[1]; b = req[2]
+    document.getElementsByTagName('header')[0].style.display = "none"
+    document.getElementById("color").style.background =  "rgb("+r+","+g+","+b+")"
+}
+
+
+</script>
+</body>
+</html>

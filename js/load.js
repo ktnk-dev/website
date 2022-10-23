@@ -1,25 +1,47 @@
 function sleep(ms) {return new Promise(resolve => setTimeout(resolve, ms));}
 function header_status(str){document.getElementsByClassName('header_status')[0].innerHTML = str}
-function header_setup(array) {
-    links = document.getElementsByClassName('header_links')[0]
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        link = document.createElement('a')
-        link.classList.add('header_link','header_link:'+element[0])
-        link.innerHTML = element[0]
-        link.href = element[1]
-        links.appendChild(link)  
-}   }
+
+header = {
+    load: function (array, clear){
+        links = document.getElementsByClassName('header_links')[0]
+        if  (clear == true) { links.innerHTML = '' }
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            link = document.createElement('a')
+            link.classList.add('header_link','header_link:'+element[0])
+            link.innerHTML = element[0]
+            link.href = element[1]
+            links.appendChild(link) 
+    }   },
+    status: function (str){document.getElementsByClassName('header_status')[0].innerHTML = str},
+    active: function(name){ document.getElementsByClassName('header_link:'+name)[0].classList.add('header_active_link') },
+    title: {
+        edit: function(name){
+            list = document.getElementsByClassName('header_text')[0].innerHTML.split(' • ')
+            list[0] = name
+            document.getElementsByTagName('title')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML = list.join(' • ')
+        },
+        add: function(name, clear){
+            if (clear == true){
+                document.getElementsByTagName('title')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML.split(' • ')[0] +  ' • ' + name
+            } else {
+
+                document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML  + ' • ' + name
+                document.getElementsByTagName('title')[0].innerHTML = document.getElementsByTagName('title')[0].innerHTML  + ' • ' + name
+}    }    }   }
+    
+
+
 /* ---- Header Configuration ---- */ 
-header = [
+header_data = [
     ['About','/about/'],
     ['Projects','/projects/']
 ]
-header_setup(header)
-header_status('[scroll down]')
+header.load(header_data)
+header.status('[scroll down]')
 /* ------------------------------ */ 
-function header_active(name){ document.getElementsByClassName('header_link:'+name)[0].classList.add('header_active_link') }
-function post_loader(array, type){
+
+async function post_loader(array, type){
     for (let i = 0; i < array.length; i++) {
         const data = array[i];
     
@@ -33,7 +55,7 @@ function post_loader(array, type){
         post_title.innerHTML = "# "+data.title 
         post_title.classList.add('post_title')
         post_header.appendChild(post_title)
-        if (type == 'story'){
+        if (data.time != undefined){
             post_time = document.createElement('span')
             post_time.innerHTML = data.time
             post_time.classList.add('post_time')
@@ -42,10 +64,10 @@ function post_loader(array, type){
         post_div.appendChild(post_header)
     
         post_text = document.createElement('div')
-        post_text.innerHTML = data.text
+        post_text.innerHTML = data.text.replaceAll('\n','<br>')
         post_text.classList.add('post_text')
         post_div.appendChild(post_text)
-        if (type == 'project'){
+        if (data.urls != undefined){
             post_urls = document.createElement('div')
             post_urls.classList.add('post_end_urls','post_text')
             for (let j = 0; j < data.urls.length; j++) {
@@ -58,17 +80,24 @@ function post_loader(array, type){
             }
             post_div.appendChild(post_urls)
         }
-        if (data.img != false){
+        if (data.img != undefined){
             post_image = document.createElement('img')
             post_image.src = data.img
             post_image.classList.add('post_image')
+            if (data.img_filter != undefined){
+                for (let k = 0; k < data.img_filter.length; k++) {
+                    const element = data.img_filter[k];
+                    post_image.classList.add('image_filter-'+element)
+                    
+                }
+            }
             post_div.appendChild(post_image)
         }
-        document.getElementsByClassName('main')[0].appendChild(post_div)    
+        document.getElementsByClassName('main')[0].appendChild(post_div) 
+        // post_div.classList.add('post_animation') 
+        await sleep(100)  
 }   }
-function title_add(name){
-    document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML  + ' • ' + name
-    document.getElementsByTagName('title')[0].innerHTML = document.getElementsByTagName('title')[0].innerHTML  + ' • ' + name}
+
 document.getElementById('js_disabled').remove()
 function app_init(){document.getElementsByTagName('body')[0].appendChild(document.createElement('app'))}
 

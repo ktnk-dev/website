@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   white-space: inherit;
+  opacity: 1;
+  animation: post_anim .7s;
 } .post_head {
   display: flex;
   flex-direction: row;
@@ -15,7 +17,7 @@
 } .post_title {
   font-size: 18px;
 } .post_text {
-  margin: 6px 22px 1px;
+  margin: 6px 22.7px 1px;
   color: #ccc;
   transition: all .4s;
 } .post_end_url {
@@ -31,7 +33,17 @@
   border: #444 1px solid;
 } .post_image:hover {
   filter: none;
+} br {
+  margin-bottom: 7px;
 }
+
+.image_filter-blur{
+  filter: blur(5px); 
+  clip-path: fill-box ;
+} .image_filter-no-border{
+  border: 0;
+}
+
 
 @media (max-width:400px) {
   .post_head{
@@ -41,4 +53,9 @@
   } .post_image {
     width: 85%;
   }
+}
+
+@keyframes post_anim {
+  0%  {opacity: 0;}
+  100%{opacity: 1;}
 }

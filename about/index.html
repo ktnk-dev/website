@@ -22,22 +22,34 @@
     <span class="header_status"></span> 
 </header><div class="main">
     
-    <div class="post">
-        <div class="post_head">
-            <span class="post_title"># Минимальная информация</span>
-    
-        </div>
-        <div class="post_text">Привет, меня зовут Синя. Я - Python и JS разработчик. Вечно бухаю. Все как всегда</div>
-        <div class="post_end_urls post_text">
-            <a href="https://github.com/ktnk-dev" class="post_end_url">Github</a><a href="https://vk.com/id663192195" class="post_end_url">VK</a><a href="https://www.donationalerts.com/r/ktnk_dev" class="post_end_url">DonationAlerts</a>
-        </div>
-    </div>
+
 
 
 </div><script src="/js/load.js"></script>
 <script>
-title_add('About')
-header_active('About')
+header.title.add('About')
+header.active('About')
+post_loader([{
+    title: 'Обо мне',
+    text: 'Привет, меня зовут Синя, и вы находитесь на моем сайте, добро пожаловать в мой уютный уголок!\nПроживаю в России, где-то далеко на юге, где вода по расписанию, да интернет паршивый. Имеется свой сервер, находящийся в месте, где с интернетом зачастую нет никаких проблем.\nЛюблю выпить, покурить, погулять по крышам в свободное от работы и учебы время. \nПровожу болшьую часть времени в моем родном интернете, или в каких-нибудь скрытых сетях, проложенные через VPN по всему миру.',
+    urls:[
+        ['VK', "https://vk.com/id663192195"],
+        ['Twitch',"https://twitch.tv/ktnk_dev"],
+        ['Поддержать ♡',"https://www.donationalerts.com/r/ktnk_dev"],
+    ],
+    img: 'https://media.discordapp.net/attachments/766382334067867668/1033649083472158781/unknown.png?',
+    img_filter: ['blur','no-border']
+},{
+
+    title:'Разработка',
+    text:'Я - Python разработчик, так же работаю с JavaScript в связке с версткой, но пока лишь продолжаю изучение JavaScript.\n Специализируюсь на создании Telegram, Discord, VK ботов на Python, чаще всего делаю их на заказ, или для собственных нужд.\n Так-же создаю парсеры, чтобы важная информация была доставлена пользователю в удобном виде, без чего-либо лишенго.\n Создаю специализированное ПО на Python под конкретные цели на заказ, или для работы. Например для заполнения километровых таблиц, сортировки данных, для создания и внедрения в рабочую отчетность.\nПробую себя в создании полноценных приложений на Python, используя kivy, или JavaScript, используя React или вспомогательные библеотеки.',
+    urls:[['Github',"https://github.com/ktnk-dev"],],
+    img: 'https://media.discordapp.net/attachments/766382334067867668/1033654735749787668/unknown.png?',
+    img_filter: ['blur','no-border']
+
+}
+
+])
 </script>
 </body>
 </html>
