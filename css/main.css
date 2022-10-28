@@ -63,7 +63,7 @@
   margin: 40px 30px 30px;
   max-width: 100px;
   max-height: 100px;
-  border: #ddd 5px solid;
+  border: rgb(255, 255, 255) 5px solid;
   animation: qr_load 1.3s;
 
 

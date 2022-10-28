@@ -6,6 +6,7 @@
   white-space: inherit;
   opacity: 1;
   animation: post_anim .7s;
+  
 } .post_head {
   display: flex;
   flex-direction: row;
