@@ -72,7 +72,27 @@ async function post_loader(array, type){
         }
         post_text.classList.add('post_text')
         post_div.appendChild(post_text)
-
+        
+        if (data.tags != undefined){
+            post_tags = document.createElement('div')
+            post_tags.classList.add('post_tags')
+            post_tags.innerHTML = ''
+            for (let j = 0; j < data.tags.length; j++) {
+                const tag = data.tags[j];
+                div_tag = document.createElement('span')
+                div_tagc = document.createElement('span')
+                div_tagc.classList.add('post_tag_point')
+                div_tagc.innerHTML = '⠀'
+                post_tags.appendChild(div_tagc)
+                div_tag.innerHTML = tag
+                div_tag.classList.add('post_tag')
+                if (tag == 'Python'){ div_tagc.style.backgroundColor = '#59d' }
+                if (tag == 'HTML'){ div_tagc.style.backgroundColor = '#d83' }
+                if (tag == 'JavaScript'){ div_tagc.style.backgroundColor = '#dd0' }
+                post_tags.appendChild(div_tag)
+            }
+            post_div.appendChild(post_tags)
+        }
         if (data.urls != undefined){
             post_urls = document.createElement('div')
             post_urls.classList.add('post_end_urls','post_text')

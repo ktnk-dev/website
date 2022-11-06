@@ -38,34 +38,46 @@
 
 
 </div><script src="/js/load.js"></script>
+
 <script>
 
 header.active('Projects')
 projects = [{
     title: window.location.host,
     text: 'Исходный код этого сайта. Бесполезно, но прикольно',
-    urls: [
-        ['Github', 'https://github.com/ktnk-dev/website']
-]}
+    urls: [['Github', 'https://github.com/ktnk-dev/website']],
+    tags: ['HTML','JavaScript'],
+}
 ,{
     title: 'web-color',
     text: 'Веб-сайт, позволяющий создать любой из 16 миллионов цветов, их светлые или темные оттенки. Очень удобно для фотографов, световиков, и тех, кто просто хочет привнести эстетики, пока фотографируются',
-    urls: [['Open','/app/web_color'],['Github','https://github.com/ktnk-dev/website/tree/main/app/web_color']],
+    urls: [
+        ['Open','/app/web_color'],
+        ['Github','https://github.com/ktnk-dev/website/tree/main/app/web_color']],
+    tags: ['HTML','JavaScript'],
+
+}
+,{
+    title:'py-tg-channel-fetcher',
+    text:'Скрипт на Python',
+    urls: [['Github','https://github.com/ktnk-dev/py-tg-channel-fetcher/']],
+    tags: ['Python'],
 }
 ,{
     title:'shorturl-data-parser',
     text:'Скрипт на Python, который парсит пользовательскую информацию из сокращенной ссылки ',
     img: 'https://media.discordapp.net/attachments/766761127882522635/1018975671822856253/unknown.png',
-    urls: [['Github','https://github.com/ktnk-dev/shorturl-data-parser/']]
+    urls: [['Github','https://github.com/ktnk-dev/shorturl-data-parser/']],
+    tags: ['Python'],
+
 }
 ,{
     title: 'anekdot',
-    text: 'Python скрипт, который выводит случайный анекдот',
-    urls:[
-        ['Github','https://github.com/ktnk-dev/anekdot']
-    ]
-}
-    
+    text: 'Скрипт на Python, который выводит случайный анекдот',
+    urls:[['Github','https://github.com/ktnk-dev/anekdot']],
+    tags: ['Python'],
+
+}, 
     ,]
 header.title.add('Projects')
 post_loader(projects, 'project')
