@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram WebApp</title>
+    <link rel="stylesheet" href="/css/telegram.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+<div class="main">
+    <h1 class="head_text">UI Test</h1>
+    <input type="text" class="head_input" id="inp">
+    <button class="head_button" onclick="printres()">
+        RUN
+    </button>
+    <span class="result" id="res">
+        напиши чтонибудь и ткни РАН
+    </span>
+
+    <!-- <a href="/">RETURN TO HOMEPAGE</a> -->
+
+
+</div>
+<script>
+function printres(){
+    document.getElementById('res').innerHTML = document.getElementById('inp').value
+}
+
+</script>
+</body>
+</html>

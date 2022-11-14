@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuckDuckGo • Theme loader</title>
+    <link rel="stylesheet" href="/css/telegram.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<script>
+color = getComputedStyle(document.body).getPropertyValue('--tg-theme-bg-color')
+window.location.href = `https://duckduckgo.com/?kj=%23${color}&k7=%23${color}&kae=${color}`
+</script>
+</body>
+</html>
