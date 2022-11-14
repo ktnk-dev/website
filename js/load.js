@@ -25,7 +25,6 @@ header = {
             if (clear == true){
                 document.getElementsByTagName('title')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML.split(' • ')[0] +  ' • ' + name
             } else {
-
                 document.getElementsByClassName('header_text')[0].innerHTML = document.getElementsByClassName('header_text')[0].innerHTML  + ' • ' + name
                 document.getElementsByTagName('title')[0].innerHTML = document.getElementsByTagName('title')[0].innerHTML  + ' • ' + name
 }    }    }   }
