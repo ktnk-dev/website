@@ -52,7 +52,8 @@
 } .header_status {
   margin-top: 10px;
   font-size: 11px;
-  animation: blink 1s;
+  opacity: 0;
+  animation: blink 1s .7s;
   animation-iteration-count: 999999
 } app {
   padding: 0 10px;
@@ -84,8 +85,8 @@
 }
 
 @keyframes blink{
-  0%  {color: #fff; opacity: 100%;}
-  100%{opacity: 0%;}
+  0%  {color: #fff; opacity: 1;}
+  100%{opacity: 0;}
 } @keyframes js_disabled {
   0%  {color: #ddd; border-color: #ccc ;}
   50% {color: #f99; border-color: #faa ;}

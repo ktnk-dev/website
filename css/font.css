@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'f';
+    src: url('../font/FiraCode-Regular.woff2') format('woff2'),
+         url("../font/FiraCode-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  } 

@@ -1,0 +1,45 @@
+body{
+    /* --tg-theme-bg-color: #000; */
+    
+    /* --tg-theme-secondary-bg-color: #ddd;
+    --tg-theme-text-color: #000;
+    --tg-theme-button-color: rgb(179, 121, 255);
+    --tg-theme-button-text-color: #000; */
+
+
+    margin: 0;
+    padding: 0;
+    background-color: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+    /* padding: 10px; */
+} .main {
+    border-radius: 10px;
+    padding: 0 20px;
+    background-color: var(--tg-theme-bg-color);
+    display: flex;
+    flex-direction: column;
+} h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: normal;
+} input {
+    border: solid 1px var(--tg-theme-text-color);
+    padding: 10px 10px;
+    margin: 0 0 10px;
+    font-size: 15px;
+    border-radius: 7px;
+    outline-style: none;
+    
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
+} button {
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    margin: 0 auto 10px;
+    border: 0;
+    border-radius: 500px;
+    width: min-content;
+    padding: 10px 20px;
+}
