@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin / Scenes</title>
+<style>
+body {
+    background-color: #000;
+    margin: 0;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+} h1 {
+    margin-bottom: 20px;
+} h3 {
+    margin: 0; padding: 0;
+} .text { 
+    padding: 0 10px;
+}.list {
+    /* margin-top: 30px; */
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    margin-bottom: 30px;
+
+} .el {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+} .elid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px 0 7px;
+    /* margin-right: 5px; */
+    background-color: #333;
+    border-radius: 7px 0 0 7px;
+    font-family: monospace;
+} .elinfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+} .elname {
+    background-color: #222;
+    /* text-align: center; */
+    /* height: 20px; */
+    padding: 5px 10px;
+    font-size: 17px;
+    font-family: monospace;
+    font-weight: bold;    
+    border-radius: 0 7px 0 0;
+} .eldescr {
+    padding: 10px 10px;
+    border-radius: 0 0 7px 0;
+    font-size: 14px;
+    color: #ccc;
+    background-color: #191919;
+} a {
+    color: #fff;
+} .nodescr {
+    color: #777;
+} .count {
+    font-family: monospace;
+    background-color: #222;
+    padding: 2px 4px;
+} p {
+    margin: 5px 0;
+}
+</style>
+</head>
+<body>
+    <div class="text">
+        <h1>Список сцен в Genshin Impact</h1>
+        <p>На этом сайте полный список известных сцен в игре. Всего их <span class="count" id="allcount">0</span></p>
+        <p>На данный момент исследуется версия <span class="count">3.4</span></p>
+        <p style="margin-top: 10px;">С любовью, <a href="/">Синечка</a></p>
+    </div>
+    <div class="list" id="l">
+        <!-- <div class="el">
+           <div class="elid"><span>12</span></div>
+           <div class="elinfo">
+                <div class="elname"><a>WORLD_name xdxdxd</a></div>
+                <div class="eldescr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aut quia quae, nihil corporis magnam vero. Aliquid explicabo, quos officia officiis ipsum natus magnam, dolorem rerum aliquam deleniti alias consectetur consequatur.</div>
+           </div>
+        </div> -->
+
+    </div>
+
+<script src="scenesforgenshinvideos.js"></script>
+<script>
+document.getElementById('allcount').innerHTML = db.length
+listinner = ''
+for (let i = 0; i < db.length; i++) {
+    const e = db[i];
+    
+    if (e.url != false){
+        name = `<div class="elname"><a href="${e.url}">${e.name}</a></div>`
+    } else { name = `<div class="elname"><a>${e.name}</a></div>`    }
+    if (e.description != false){
+        descr = `<div class="eldescr">${e.description}</div>`
+    } else { descr = `<div class="eldescr nodescr">Описание отсуствует</div>` }
+    el = `<div class="el"><div class="elid"><span>${e.id}</span></div><div class="elinfo">${name}${descr}</div></div>`
+    listinner += el
+}
+document.getElementById('l').innerHTML = listinner
+
+</script>
+</body>
+</html>
