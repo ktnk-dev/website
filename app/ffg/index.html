@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+@font-face {
+    font-family: '1';
+    src: url('1.ttf') format('truetype')
+}
+@font-face {
+    font-family: '2';
+    src: url('Zeyada.ttf') format('truetype')
+}
+* {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+input {
+    background-color: #ddd;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 1000px;
+    font-size: 20px;
+}
+.l {
+    margin-top: 30px;
+}
+button {
+    border: 0;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 200px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #222;
+}
+
+.font {
+    width: 100%;
+    height: 100%;
+    rotate: 90deg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.font > span {
+    font-size: 140px;
+}
+</style>
+</head>
+<body>
+    <h1>Генератор шрифтов</h1>
+    <input type="text" placeholder="Введите код" id="val">
+    <div class="l">
+        <button onclick="gen(1)">1 шрифт</button>
+        <button onclick="gen(2)">2 шрифт</button>
+    </div>
+
+<script>
+function gen(f) {
+    document.body.innerHTML = `<div class="font">
+        <span style="font-family: '${f}';">${document.querySelector('#val').value}</span>
+    </div>`
+}
+</script>
+</body>
+</html>
