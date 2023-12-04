@@ -22,7 +22,7 @@ body {
     align-items: center;
     margin: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     overflow: hidden;
 }
 input {
@@ -59,12 +59,25 @@ button:hover {
 }
 .font > span {
     font-size: 140px;
+    font-weight: 1000;
+}
+
+#rng {
+    width: 300px;
+    margin-top: 0;
+}
+h2 {
+    margin-bottom: 10px;
+    margin-top: 20px;
 }
 </style>
 </head>
 <body>
     <h1>Генератор шрифтов</h1>
+    <h2>Код</h2>
     <input type="text" placeholder="Введите код" id="val">
+    <h2>Жирность</h2>
+    <input type="range" min="1" max="12" value="10" id="rng">
     <div class="l">
         <button onclick="gen(1)">1 шрифт</button>
         <button onclick="gen(2)">2 шрифт</button>
@@ -73,7 +86,7 @@ button:hover {
 <script>
 function gen(f) {
     document.body.innerHTML = `<div class="font">
-        <span style="font-family: '${f}';">${document.querySelector('#val').value}</span>
+        <span style="font-family: '${f}'; font-weight: ${document.querySelector('#rng').value}00">${document.querySelector('#val').value}</span>
     </div>`
 }
 </script>
